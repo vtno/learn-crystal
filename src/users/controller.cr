@@ -21,6 +21,10 @@ module Users
     end
 
     def self.show(context)
+      params = context.request.query_params
+      return context.response.respond_with_status 404 unless params.has_key? "id"
+      user = Repo.find(params["id"].to_i64)
+      context.response.respond_with_status 200, user.to_json
     end
 
     def self.update(context)

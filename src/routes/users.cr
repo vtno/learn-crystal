@@ -10,7 +10,7 @@ module Routes
       case context.request.path
       when "/users"
         handle(context)
-      when "/user"
+      when /\/user/
         handle_sigular(context)
       when "/user/table"
         Controller.create_table(context) if context.request.method == "POST"

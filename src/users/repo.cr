@@ -15,11 +15,10 @@ module Users
       end
     end
 
-    def self.find(id : Int32)
+    def self.find(id : Int64)
       run do |db|
-        db.query "select name, age from users where id #{id}" do |rs|
-          name, age = rs.read(String, Int32)
-          User.new name, age
+        db.query_one "select rowid, * from users where rowid = #{id}" do |rs|
+          User.new rs.read(Int64), rs.read(String), rs.read(Int32)
         end
       end
     end
