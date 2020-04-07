@@ -1,0 +1,17 @@
+name: passless
+version: 0.1.0
+
+authors:
+  - tino thamjarat <tino@vtno.me>
+
+targets:
+  passless:
+    main: src/passless.cr
+
+crystal: 0.34.0
+
+dependencies:
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+
+license: MIT
